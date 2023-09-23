@@ -19,6 +19,7 @@ export default function SignIn() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
+  }
 
     const onSubmit = async (e) => {
       e.preventDefault();
@@ -114,4 +115,3 @@ export default function SignIn() {
       </section>
     );
   };
-}
