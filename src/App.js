@@ -28,10 +28,10 @@ const App = () => {
             <Route path="/create-listing" element={<CreateListing />} />
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-        </Routes>
-        <Route path="edit-listing" element={<PrivateRoute />}>
+          <Route path="/edit-listing" element={<PrivateRoute />}>
             <Route path="/edit-listing/:listingId" element={<EditListing />} />
           </Route>
+        </Routes>
       </Router>
       <ToastContainer
         position="bottom-center"
