@@ -13,7 +13,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 
-export default function CreateListing() {
+const CreateListing = () => {
   const navigate = useNavigate();
   const auth = getAuth();
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
@@ -453,4 +453,6 @@ export default function CreateListing() {
       </form>
     </main>
   );
-}
+};
+
+export default CreateListing;
