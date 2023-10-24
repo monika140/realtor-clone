@@ -118,6 +118,7 @@ const CreateListing = () => {
         const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
         const storageRef = ref(storage, filename);
         const uploadTask = uploadBytesResumable(storageRef, image);
+        console.log("hello ==>");
         uploadTask.on(
           "state_changed",
           (snapshot) => {

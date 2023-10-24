@@ -18,6 +18,7 @@ import {
 } from "react-icons/fa";
 import { getAuth } from "firebase/auth";
 import Contact from "../components/Contact";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const Listing = () => {
   const auth = getAuth();
@@ -42,6 +43,7 @@ const Listing = () => {
   if (loading) {
     return <Loader />;
   }
+  
 
   return (
     <main>
@@ -84,7 +86,7 @@ const Listing = () => {
       )}
 
       <div className="m-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5">
-        <div className="w-full h-[200] lg-[400px] z-10">
+        <div className="w-full">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - ${" "}
             {listing.offer
@@ -146,7 +148,25 @@ const Listing = () => {
             <Contact userRef={listing.userRef} listing={listing} />
           )}
         </div>
-        <div className="bg-blue-300 w-full h-[200] lg-[400px] z-10"></div>
+        <div className=" w-full h-[200px] md:h-[400px] z-10 overflow-x-hidden mt-6 md:mt-0 md:ml-2 ">
+          <MapContainer
+            center={[28.679079, 77.069710]}
+            
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker
+              position={[28.679079, 77.069710]}
+            >
+              <Popup>{listing.address}</Popup>
+            </Marker>
+          </MapContainer>
+        </div>
       </div>
     </main>
   );
