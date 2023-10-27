@@ -1,7 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import Slider from "../components/Slider";
-
+import { useState,useEffect } from "react";
 import {
   collection,
   getDoc,
@@ -11,14 +9,15 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "../firebase";
 import { Link } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
+import Slider from "../components/Slider";
+import { db } from "../firebase";
 const Home = () => {
   // Offers
   const [offerListings, setOfferListings] = useState(null);
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         // get reference
         const listingsRef = collection(db, "listings");
@@ -39,18 +38,16 @@ const Home = () => {
           });
         });
         setOfferListings(listings);
-        console.log(listings)
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchListings();
   }, []);
-
   // Places for rent
   const [rentListings, setRentListings] = useState(null);
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         // get reference
         const listingsRef = collection(db, "listings");
@@ -77,10 +74,10 @@ const Home = () => {
     }
     fetchListings();
   }, []);
-  // Places for rent
+  // Places for sale
   const [saleListings, setSaleListings] = useState(null);
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         // get reference
         const listingsRef = collection(db, "listings");
@@ -107,7 +104,6 @@ const Home = () => {
     }
     fetchListings();
   }, []);
-  
 
   return (
     <div>
