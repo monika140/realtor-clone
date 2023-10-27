@@ -60,7 +60,7 @@ const CreateListing = () => {
       boolean = false;
     }
 
-    if (e.target.file) {
+    if (e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
         images: [...e.target.files], //Use spread operator to convert FileList to an array
